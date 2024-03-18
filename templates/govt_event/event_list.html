@@ -1,0 +1,80 @@
+<!-- event_list.html -->
+{% extends 'admin_nav.html' %}
+{% block content %}
+{% load static %}
+
+<div class="breadcrumb-area bg-image" data-bgimage="{% static 'assets/img/bg/page-banner.jpg' %}">
+ <div class="container-fluid">
+  <div class="row">
+   <div class="col-12 text-center">
+    <h2 class="page-title color--white">Dash Board</h2>
+    <ul class="breadcrumb">
+     <li><a href="#">Home</a></li>
+     <li><a href="#">About</a><span></span></li>
+    </ul>
+   </div>
+  </div>
+ </div>
+</div>
+
+<!------------------------------dashboard--------------------------->
+<div class="container py-3">
+ <table class="table table-hover">
+  <thead >
+   <thead>
+    <tr>
+     <th scope="col">#</th>
+     <th scope="col">parliament</th>
+     <th scope="col">assembly</th>
+     <th scope="col">venue</th>
+     <th scope="col">phone</th>
+     <th scope="col">date</th>
+     <th scope="col">pre_event_image</th>
+     <th scope="col">mid_event_image</th>
+     <th scope="col">post_event_image</th>
+    </tr>
+   </thead>
+
+  </thead>
+  <tbody>
+   {% for event in events %}
+   
+   <tr>
+    <td >{{event.id}}</td>
+    <td>{{event.parliament}}</td>
+    <td>{{event.assembly}}</td>
+    <td>{{event.venue}}</td>
+    <td>{{event.phone}}</td>
+    <td>{{event.date}}</td>
+    <td>
+     <img src="{{event.pre_event_image.url}}" width="40px" height="30px" alt="blog-img">
+    </td>
+    <td>
+     <img src="{{event.mid_event_image.url}}" width="40px" height="30px" alt="blog-img">
+    </td>
+    <td>
+     <img src="{{event.post_event_image.url}}" width="40px" height="30px" alt="blog-img">
+    </td>
+    
+    <td>
+     <a href="{% url 'edit_event' event.id %}">
+      <img src="{% static 'assets/img/icons/edit.png' %}" class="m-2" width="14px" height="14px" alt="edit">
+     </a>
+     <a href="{% url 'delete_event' event.id %}">
+      <img src="{% static 'assets/img/icons/delete.png' %}" class="m-2" width="14px" height="14px" alt="delete">
+     </a>
+    </td>
+    
+    <td>
+     <a href="{% url 'create_event' %}" class="text-decoration-none">
+      <img src="{% static 'assets/img/icons/plus.png' %}" class="m-2" width="14px" height="14px" alt="menu">
+      Add
+     </a>
+    </td>
+
+   </tr>
+   {% endfor %}
+  </tbody>
+ </table>
+</div>
+{% endblock %}
