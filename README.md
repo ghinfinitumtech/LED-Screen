@@ -1,2 +1,2 @@
 # LED-Screen-
-LED-Screen  Reporting with Dijanog
+LED-Screen  Reporting with Dijango
